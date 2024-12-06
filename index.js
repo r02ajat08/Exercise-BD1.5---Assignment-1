@@ -15,30 +15,15 @@ app.use(cors());
 
 // q-1
 
-app.get("/cart-total", (req,res)=>{
-  let newItemPrice =parseFloat(req.query.newItemPrice);
-  let cartTotal = parseFloat(req.query.cartTotal);
-  let item1price = parseFloat(req.query.newItemPrice);
-  let item2price = parseFloat(req.query.newItemPrice);
-  let item3price = parseFloat(req.query.newItemPrice);
-  total= item1price+item2price+item3price;
-  res.send(total.toString());
-
-});
-
-// q-2
-
-// app.get("/membership-discount", (req,res)=>{
+// app.get("/cart-total", (req,res)=>{
+//   let newItemPrice =parseFloat(req.query.newItemPrice);
 //   let cartTotal = parseFloat(req.query.cartTotal);
-//   let isMember = req.query.isMember;
-//   let discount = parseFloat(10);
-//   let result;
-//   if (isMember =="true"){
-//     result = cartTotal-(cartTotal*discount/100)
-//   }else{
-//     result = cartTotal
-//   }
-//   res.send("₹"+result.toString());
+//   let item1price = parseFloat(req.query.newItemPrice);
+//   let item2price = parseFloat(req.query.newItemPrice);
+//   let item3price = parseFloat(req.query.newItemPrice);
+//   total= item1price+item2price+item3price;
+//   res.send(total.toString());
+
 // });
 app.get('/cart-total', (req, res) => {
   let item1price = parseFloat(req.query.newItemPrice);
@@ -46,6 +31,21 @@ app.get('/cart-total', (req, res) => {
   let item3price = parseFloat(req.query.newItemPrice);
   let cartTotal = item1price + item2price + item3price;
   res.send(cartTotal.toString());
+});
+
+// q-2
+
+app.get("/membership-discount", (req,res)=>{
+  let cartTotal = parseFloat(req.query.cartTotal);
+  let isMember = req.query.isMember;
+  let discount = parseFloat(10);
+  let result;
+  if (isMember =="true"){
+    result = cartTotal-(cartTotal*discount/100)
+  }else{
+    result = cartTotal
+  }
+  res.send("₹"+result.toString());
 });
 
 
