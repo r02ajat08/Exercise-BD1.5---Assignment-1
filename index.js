@@ -26,12 +26,13 @@ app.use(cors());
 
 // });
 app.get('/cart-total', (req, res) => {
-  let item1price = parseFloat(req.query.newItemPrice);
-  let item2price = parseFloat(req.query.newItemPrice);
-  let item3price = parseFloat(req.query.newItemPrice);
+  let item1price = parseFloat(req.query.item1price);
+  let item2price = parseFloat(req.query.item2price);
+  let item3price = parseFloat(req.query.item3price);
   let cartTotal = item1price + item2price + item3price;
   res.send(cartTotal.toString());
 });
+
 
 // q-2
 
